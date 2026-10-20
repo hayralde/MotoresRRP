@@ -1,5 +1,5 @@
 // Service worker da Consulta de Motores: rede primeiro, cópia em cache quando offline.
-const CACHE = 'motores-rrp-v2';
+const CACHE = 'motores-rrp-v3';
 const CACHEABLE_HOSTS = ['fonts.googleapis.com', 'fonts.gstatic.com'];
 
 self.addEventListener('install', () => self.skipWaiting());
