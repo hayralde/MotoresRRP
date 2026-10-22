@@ -1,8 +1,16 @@
-// Service worker da Consulta de Motores: rede primeiro, cópia em cache quando offline.
-const CACHE = 'motores-rrp-v3';
+// Consulta de Motores — funciona offline; online busca sempre a versão mais nova.
+const CACHE = 'motores-rrp-v4';
+const SHELL = ['./', 'index.html', 'manifest.webmanifest', 'favicon.ico',
+  'icons/icon-192.png', 'icons/icon-512.png', 'icons/apple-touch-icon.png', 'icons/favicon-32.png'];
 const CACHEABLE_HOSTS = ['fonts.googleapis.com', 'fonts.gstatic.com'];
 
-self.addEventListener('install', () => self.skipWaiting());
+self.addEventListener('install', event => {
+  event.waitUntil((async () => {
+    const cache = await caches.open(CACHE);
+    await Promise.all(SHELL.map(u => cache.add(new Request(u, { cache: 'reload' })).catch(() => {})));
+    await self.skipWaiting();
+  })());
+});
 
 self.addEventListener('activate', event => {
   event.waitUntil((async () => {
@@ -17,13 +25,20 @@ self.addEventListener('fetch', event => {
   if (req.method !== 'GET') return;
   const url = new URL(req.url);
   if (url.origin !== self.location.origin && !CACHEABLE_HOSTS.includes(url.hostname)) return;
+  const isPage = req.mode === 'navigate';
+  const isIndex = isPage || url.pathname.endsWith('/index.html');
   event.respondWith((async () => {
+    const cache = await caches.open(CACHE);
     try {
-      const res = await fetch(req);
-      if (res.ok || res.type === 'opaque') (await caches.open(CACHE)).put(req, res.clone());
+      // rede primeiro; nas páginas há limite de tempo para não travar com sinal fraco
+      const net = fetch(req, isPage ? { cache: 'no-store' } : undefined);
+      const res = await (isPage
+        ? Promise.race([net, new Promise((_, rej) => setTimeout(() => rej(new Error('timeout')), 4000))])
+        : net);
+      if (res.ok || res.type === 'opaque') cache.put(isIndex ? 'index.html' : req, res.clone());
       return res;
     } catch (e) {
-      const cached = await caches.match(req, { ignoreSearch: req.mode === 'navigate' });
+      const cached = isIndex ? await cache.match('index.html') : await cache.match(req, { ignoreSearch: true });
       if (cached) return cached;
       throw e;
     }
