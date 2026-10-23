@@ -1,10 +1,56 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-  <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#174A2B"/><stop offset="1" stop-color="#2E7D32"/></linearGradient></defs>
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#174A2B"/><stop offset="1" stop-color="#2E7D32"/></linearGradient>
+    <linearGradient id="m" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset=".55" stop-color="#EEF3EF"/><stop offset="1" stop-color="#B9C9BE"/></linearGradient>
+    <linearGradient id="au" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F6CD55"/><stop offset=".5" stop-color="#D4A017"/><stop offset="1" stop-color="#A97A0C"/></linearGradient>
+  </defs>
   <rect width="512" height="512" rx="112" fill="url(#g)"/>
-  <g transform="translate(256 262) scale(1) translate(-256 -256)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round">
-    <rect x="96" y="120" width="320" height="296" rx="40" stroke-width="32"/>
-    <line x1="96" y1="200" x2="416" y2="200" stroke-width="32"/>
-    <line x1="176" y1="80" x2="176" y2="150" stroke-width="36"/>
-    <line x1="336" y1="80" x2="336" y2="150" stroke-width="36"/>
-    <polyline points="186,306 236,352 330,262" stroke-width="36" stroke="#D4A017"/>
-  </g></svg>
+  <g>
+    <ellipse cx="252" cy="308" rx="160" ry="8" fill="#000" opacity=".28"/>
+    <!-- eixo com chaveta -->
+    <rect x="70" y="205" width="58" height="20" rx="6" fill="url(#au)"/>
+    <rect x="80" y="209" width="30" height="4" rx="2" fill="#7A5A00" opacity=".55"/>
+    <!-- flange dianteiro -->
+    <rect x="114" y="158" width="40" height="108" rx="11" fill="url(#au)"/>
+    <circle cx="134" cy="173" r="4.5" fill="#7A5A00" opacity=".7"/><circle cx="134" cy="251" r="4.5" fill="#7A5A00" opacity=".7"/>
+    <!-- caixa de ligação -->
+    <rect x="228" y="104" width="80" height="42" rx="9" fill="url(#m)"/>
+    <circle cx="240" cy="116" r="3.6" fill="#174A2B"/><circle cx="296" cy="116" r="3.6" fill="#174A2B"/>
+    <circle cx="240" cy="134" r="3.6" fill="#174A2B"/><circle cx="296" cy="134" r="3.6" fill="#174A2B"/>
+    <rect x="304" y="118" width="18" height="16" rx="4" fill="url(#au)"/>
+    <!-- carcaça com aletas -->
+    <rect x="150" y="138" width="236" height="136" rx="20" fill="url(#m)"/>
+    <g fill="#1F5C37">
+      <rect x="168" y="151" width="200" height="9" rx="4.5"/>
+      <rect x="168" y="170" width="200" height="9" rx="4.5"/>
+      <rect x="168" y="189" width="200" height="9" rx="4.5"/>
+      <rect x="168" y="208" width="200" height="9" rx="4.5"/>
+      <rect x="168" y="227" width="200" height="9" rx="4.5"/>
+      <rect x="168" y="246" width="200" height="9" rx="4.5"/>
+    </g>
+    <g fill="#fff" opacity=".85">
+      <rect x="172" y="161" width="192" height="2.5" rx="1.2"/>
+      <rect x="172" y="180" width="192" height="2.5" rx="1.2"/>
+      <rect x="172" y="199" width="192" height="2.5" rx="1.2"/>
+      <rect x="172" y="218" width="192" height="2.5" rx="1.2"/>
+      <rect x="172" y="237" width="192" height="2.5" rx="1.2"/>
+      <rect x="172" y="256" width="192" height="2.5" rx="1.2"/>
+    </g>
+    <!-- tampa do ventilador com grade -->
+    <rect x="380" y="154" width="50" height="104" rx="20" fill="url(#m)"/>
+    <g stroke="#1F5C37" stroke-width="5.5" stroke-linecap="round">
+      <line x1="394" y1="172" x2="394" y2="240"/>
+      <line x1="405" y1="172" x2="405" y2="240"/>
+      <line x1="416" y1="172" x2="416" y2="240"/>
+    </g>
+    <!-- pés e base -->
+    <rect x="164" y="272" width="50" height="22" rx="6" fill="url(#m)"/><rect x="322" y="272" width="50" height="22" rx="6" fill="url(#m)"/>
+    <circle cx="189" cy="283" r="4.5" fill="#174A2B"/><circle cx="347" cy="283" r="4.5" fill="#174A2B"/>
+    <rect x="146" y="292" width="244" height="13" rx="6" fill="url(#au)"/>
+  </g>
+  <g fill="none" stroke="#fff" stroke-width="26" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M121 436 V346 H159 a23 23 0 0 1 0 46 H121 M151 392 L187 436"/>
+    <path d="M221 436 V346 H259 a23 23 0 0 1 0 46 H221 M251 392 L287 436"/>
+    <path d="M321 436 V346 H359 a23 23 0 0 1 0 46 H321"/>
+  </g>
+</svg>

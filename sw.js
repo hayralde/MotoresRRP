@@ -1,5 +1,5 @@
 // Consulta de Motores — funciona offline; online busca sempre a versão mais nova.
-const CACHE = 'motores-rrp-v4';
+const CACHE = 'motores-rrp-v5';
 const SHELL = ['./', 'index.html', 'manifest.webmanifest', 'favicon.ico',
   'icons/icon-192.png', 'icons/icon-512.png', 'icons/apple-touch-icon.png', 'icons/favicon-32.png'];
 const CACHEABLE_HOSTS = ['fonts.googleapis.com', 'fonts.gstatic.com'];
